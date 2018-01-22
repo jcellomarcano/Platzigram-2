@@ -7,14 +7,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.platzi.platzigram.R;
+import com.platzi.platzigram.login.presenter.LoginPresenter;
+import com.platzi.platzigram.login.presenter.LoginPresenterImpl;
 import com.platzi.platzigram.view.ContainerActivity;
 import com.platzi.platzigram.view.CreateAccountActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -27,11 +30,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @BindView(R.id.progressbarLogin)
     ProgressBar progressbarLogin;
 
+    private LoginPresenter loginPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        hideProgressBar();
+        loginPresenter = new LoginPresenterImpl(this);
     }
 
     @Override
@@ -60,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void loginError(String error) {
-
+        Toast.makeText(this, getString(R.string.login_error) + error, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -77,5 +84,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @OnClick(R.id.login)
     public void onViewClicked() {
+        loginPresenter.signIn(username.getText().toString(), password.getText().toString());
     }
 }
