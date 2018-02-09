@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "893899361238",
+    "firebase_url": "https://platzigram-26d85.firebaseio.com",
+    "project_id": "platzigram-26d85",
+    "storage_bucket": "platzigram-26d85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893899361238:android:3e18d6646cb454e0",
+        "android_client_info": {
+          "package_name": "com.platzi.platzigram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893899361238-tfd8vhrc0rf46n73ct5n35pdeba4r0nt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.platzi.platzigram",
+            "certificate_hash": "d434962173b5e9a000146fcd074dd734007472ee"
+          }
+        },
+        {
+          "client_id": "893899361238-k7nnbfpfjevnol8e5ksh6b1duaa8hjqr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj6Gv1yx9LV-fSQhSePw--dk8HSao01WM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893899361238-k7nnbfpfjevnol8e5ksh6b1duaa8hjqr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
