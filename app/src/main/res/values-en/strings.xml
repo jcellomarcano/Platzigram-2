@@ -19,5 +19,6 @@
     <string name="login_error">Something happen: </string>
     <string name="hint_title">Título</string>
     <string name="text_button_createpost">Crear post</string>
+    <string name="account_success">Cuenta creada exitosamente</string>
 
 </resources>

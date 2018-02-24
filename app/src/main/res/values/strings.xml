@@ -30,4 +30,6 @@
     <string name="hint_title">Título</string>
     <string name="hint_description">Descripción</string>
     <string name="text_button_createpost">Crear post</string>
+    <string name="account_success">Cuenta creada exitosamente</string>
+    <string name="account_failed">No se ha podido crear la cuenta</string>
 </resources>

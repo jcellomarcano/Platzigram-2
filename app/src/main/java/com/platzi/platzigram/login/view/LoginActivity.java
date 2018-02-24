@@ -2,6 +2,7 @@ package com.platzi.platzigram.login.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,11 +10,12 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.platzi.platzigram.R;
 import com.platzi.platzigram.login.presenter.LoginPresenter;
 import com.platzi.platzigram.login.presenter.LoginPresenterImpl;
 import com.platzi.platzigram.view.ContainerActivity;
-import com.platzi.platzigram.view.CreateAccountActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,6 +33,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     ProgressBar progressbarLogin;
 
     private LoginPresenter loginPresenter;
+    private static final String TAG = "LoginRepositoryImpl";
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,34 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         ButterKnife.bind(this);
         hideProgressBar();
         loginPresenter = new LoginPresenterImpl(this);
+        firebaseAuth = FirebaseAuth.getInstance();
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                if (firebaseUser != null) {
+
+                } else {
+
+                }
+            }
+        };
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(authStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        firebaseAuth.removeAuthStateListener(authStateListener);
+    }
+
+    public void goCreateAccount(View view) {
+        goCreateAccount();
     }
 
     @Override
@@ -84,6 +117,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @OnClick(R.id.login)
     public void onViewClicked() {
-        loginPresenter.signIn(username.getText().toString(), password.getText().toString());
+        signIn(username.getText().toString(), password.getText().toString());
+    }
+
+    private void signIn(String username, String password) {
+        loginPresenter.signIn(username, password, this, firebaseAuth);
     }
 }
