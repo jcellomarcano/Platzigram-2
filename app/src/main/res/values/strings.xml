@@ -32,4 +32,12 @@
     <string name="text_button_createpost">Crear post</string>
     <string name="account_success">Cuenta creada exitosamente</string>
     <string name="account_failed">No se ha podido crear la cuenta</string>
+
+    <string name="facebook_app_id">1970196982992539</string>
+    <string name="fb_login_protocol_scheme">fb1970196982992539</string>
+    <string name="fb_login_unsuccess">No se ha podido iniciar sesión con facebook</string>
+    <string name="sign_out">Cerrar sesión</string>
+    <string name="about">Acerca de</string>
+    <string name="about_app">Platzigram creada en el curso de android de platzi</string>
+
 </resources>
